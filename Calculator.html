@@ -1,0 +1,108 @@
+<!-- Author: Filiberto Reyes -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="css/app.css">
+
+	<meta charset="UTF-8">
+	<title>Calculator</title>
+</head>
+<body>
+
+<div class="wrapper">
+
+<div class="calcBody">
+
+<form name="Calculator">
+
+
+
+<input class="display" name="display" placeholder="0" readonly>
+		<br>
+	<input class="button" type="button" value="7" onClick="numBtn('7')">
+	<input class="button" type="button" value="8" onClick="numBtn('8')">
+	<input class="button" type="button" value="9" onClick="numBtn('9')">
+	<input class="button" type="button" value="&divide" onClick="division()">
+		<br>
+	<input class="button" type="button" value="4" onClick="numBtn('4')">
+	<input class="button" type="button" value="5" onClick="numBtn('5')">
+	<input class="button" type="button" value="6" onClick="numBtn('6')">
+	<input class="button" type="button" value="&times" onClick="multiplication()">
+		<br>
+	<input class="button" type="button" value="1" onClick="numBtn('1')">
+	<input class="button" type="button" value="2" onClick="numBtn('2')">
+	<input class="button" type="button" value="3" onClick="numBtn('3')">
+	<input class="button" type="button" value="-" onClick="subtraction()">
+		<br>
+	<input class="button" type="button" value="0" onClick="numBtn('0')">
+	<input class="button" type="button" value="C" onClick="btnClear()">
+	<input class="button" type="button" value="." onClick="numBtn('.')">
+	<input class="button" type="button" value="+" onClick="addition()">
+		<br>
+	<input class="buttonEquals" type="button" value="=" onClick="equals()">
+</form>
+
+</div>
+</div>
+
+
+	
+</body>
+</html>
+
+<script>
+
+var output = document.Calculator.display.value;
+var cleared = true;
+var evaluated = false;
+
+function numBtn(a) {
+
+	if(evaluated) {
+		btnClear();
+		console.log('evaluated is true')
+	}
+
+	if(('' === output) && (a == '0') && cleared) {
+		console.log('Display is clear!')
+		return;
+	}
+
+	else {
+		evaluated = false;
+		cleared = false;
+		document.Calculator.display.value += a;
+	}
+}
+
+function division () {
+	document.Calculator.display.value +='/';
+}
+
+function multiplication () {
+	document.Calculator.display.value +='*';
+}
+
+function subtraction () {
+	document.Calculator.display.value +='-';
+}
+
+function addition () {
+	document.Calculator.display.value +='+';
+}
+
+function equals () {
+	evaluated = true;
+	document.Calculator.display.value = eval(document.Calculator.display.value);
+	console.log('answer is: ' + document.Calculator.display.value);
+}
+
+function btnClear () {
+	cleared = true;
+	document.Calculator.display.value = "";
+}
+
+
+</script>
+
